@@ -1,0 +1,6 @@
+spring.application.name=Ecommerce
+spring.datasource.username = root
+spring.datasource.password= Akkuu@0804
+spring.jpa.show-sql= true
+spring.jpa.hibernate.ddl-auto=update
+server.port = 8080

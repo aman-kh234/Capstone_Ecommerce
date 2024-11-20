@@ -1,0 +1,33 @@
+package com.customer.entity;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int customer_id;
+
+    private String name;
+    private String email;
+    private String password;
+    private int age;
+    private String gender;
+    private java.util.Date dob;  // You can use java.util.Date or java.time.LocalDate
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Address> addresses;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime updatedAt = LocalDateTime.now();
+}
