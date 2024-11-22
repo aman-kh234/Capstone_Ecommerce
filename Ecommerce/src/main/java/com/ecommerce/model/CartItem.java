@@ -1,7 +1,5 @@
 package com.ecommerce.model;
 
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -18,18 +16,20 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
-public class Cart_Item {
+public class CartItem {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long cartItem_id;
+	private Long id;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Cart cart;
 	
+	@ManyToOne
 	private Product product;
 	
 	private String size;
@@ -40,5 +40,5 @@ public class Cart_Item {
 	
 	private Integer sellingPrice;
 	
-	private Long userid;
+	private Long userId;
 }

@@ -1,14 +1,17 @@
 package com.ecommerce.model;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+
+import com.ecommerce.domain.AccountStatus;
+import com.ecommerce.domain.UserRole;
+import com.ecommerce.model.Order;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,24 +24,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Coupon {
-
+public class Transaction {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String code;
+	@ManyToOne
+	private User customer;
 	
-	private double discountPercentage;
+	@OneToOne
+	private Order order;
 	
-	private LocalDate validityStartDate;
+	@ManyToOne
+	private Seller seller;
 	
-	private LocalDate validityEndDate;
+	private LocalDateTime date = LocalDateTime.now();
 	
-	private double minimumOrderValue;
-	
-	private boolean isActive = true;
-	
-	@ManyToMany(mappedBy = "usedCoupons")
-	private Set<User> usedByUsers = new HashSet<>();
 }
