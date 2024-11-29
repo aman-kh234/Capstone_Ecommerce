@@ -41,7 +41,7 @@ public class AppConfig {
 			public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
 				// provide all url which can access our backend from frontend
 				CorsConfiguration cfg = new CorsConfiguration();
-				cfg.setAllowedOrigins(Collections.singletonList("*"));
+				cfg.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
 				cfg.setAllowedMethods(Collections.singletonList("*"));
 				cfg.setAllowedHeaders(Collections.singletonList("*"));
 				cfg.setAllowCredentials(true);

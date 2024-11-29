@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService{
 			category.setCategoryId(req.getCategory2());
 			category.setLevel(2);
 			category.setParentCategory(category1);
-			category1=categoryRepository.save(category);
+			category2=categoryRepository.save(category);
 		}
 		
 		Category category3 = categoryRepository.findByCategoryId(req.getCategory3());
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService{
 			category.setCategoryId(req.getCategory3());
 			category.setLevel(3);
 			category.setParentCategory(category2);
-			category1=categoryRepository.save(category);
+			category3=categoryRepository.save(category);
 		}
 		
 		int discountPercentage = calculateDiscountPercentage(req.getMrpPrice(),req.getSellingPrice());
@@ -113,14 +113,13 @@ public class ProductServiceImpl implements ProductService{
 		// using specification for data jpa filtering
 		Specification<Product> spec = (root,query,criteriaBuilder)->{
 			List<Predicate>predicates = new ArrayList<>();
-			if(category!=null) {
-				Join<Product,Category> categoryJoin = root.join("category");
-				predicates.add(criteriaBuilder.equal(categoryJoin.get("categoryId"), category));
-			}
 			
 			if (category != null && !category.isEmpty()) {
-                predicates.add(criteriaBuilder.equal(root.get("category"), category));
+				Join<Product, Category> categoryJoin = root.join("category");
+			    // Assuming `category` is a String representing the category ID
+			    predicates.add(criteriaBuilder.equal(categoryJoin.get("categoryId"), category));
             }
+			
             if (brand != null && !brand.isEmpty()) {
                 predicates.add(criteriaBuilder.equal(root.get("brand"), brand));
             }

@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService{
 			
 			int totalPrice = quantity*product.getSellingPrice();
 			cartItem.setSellingPrice(totalPrice);
-			
+			cartItem.setMrpPrice(quantity*product.getMrpPrice());
 			cart.getCartItems().add(cartItem);
 			cartItem.setCart(cart);
 			
@@ -69,10 +69,14 @@ public class CartServiceImpl implements CartService{
 		return cartRepository.save(cart);
 	}
 
-	private double discount(int totalPrice, int totalSellingPrice) {
+	private double discount(int totalPrice, int totalSellingPrice) 
+	{
 		double discountPrice = totalPrice-totalSellingPrice;
+		if(totalPrice>0) {
 		double discount = ((discountPrice*1.0)/totalPrice)*100;
 		return discount;
+		}
+		return 0;
 	}
 	
 }
