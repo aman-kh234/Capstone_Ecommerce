@@ -1,9 +1,12 @@
 package com.ecommerce.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,6 +34,13 @@ public class SellerProductController {
 	private final ProductService productService;
 	@Autowired
 	private final SellerService sellerService;
+	
+	@GetMapping()
+	public ResponseEntity<List<Product>> getProductBySellerId(@RequestHeader("Authorization") String jwt)throws Exception{
+		Seller seller = sellerService.getSellerProfile(jwt);
+		List<Product>ls = productService.getProductBySellerId(seller.getId());
+		return new ResponseEntity<>(ls, HttpStatus.OK);
+	}
 	
 	@PostMapping()
 	public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest request,@RequestHeader("Authorization") String jwt) throws Exception 
