@@ -7,7 +7,7 @@ import com.ecommerce.model.CartItem;
 import com.ecommerce.model.Product;
 import com.ecommerce.model.User;
 
-@Service
+
 public interface CartService {
 	public CartItem addCartItem(User user,Product product,String size,int quantity);
 	public Cart findUserCart(User user);

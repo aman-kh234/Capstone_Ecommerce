@@ -8,7 +8,7 @@ import com.ecommerce.Exception.SellerException;
 import com.ecommerce.domain.AccountStatus;
 import com.ecommerce.model.Seller;
 
-@Service
+
 public interface SellerService {
 	Seller getSellerProfile(String jwt) throws Exception;
 	Seller createSeller(Seller seller)throws Exception;
