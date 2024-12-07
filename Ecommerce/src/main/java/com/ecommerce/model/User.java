@@ -7,6 +7,7 @@ import com.ecommerce.domain.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +43,7 @@ public class User {
 	
 	private UserRole role = UserRole.Role_Customer;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Address> addresses = new HashSet<>();
 	
 	@ManyToMany

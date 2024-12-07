@@ -36,5 +36,16 @@ public class UserServiceImpl implements UserService{
 		}
 		return user;
 	}
+
+	@Override
+	public User updateUserDetails(User user, Long userId) throws Exception {
+		User user1 = userRepository.findById(userId).get();
+		if(user1==null) {
+			throw new Exception("user not found with email - " + user.getEmail());
+		}
+		user1.setFullName(user.getFullName());
+		user1.setMobile(user.getMobile());
+		return userRepository.save(user1);
+	}
 	
 }
