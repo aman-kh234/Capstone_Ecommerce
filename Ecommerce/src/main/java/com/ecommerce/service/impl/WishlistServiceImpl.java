@@ -17,6 +17,7 @@ public class WishlistServiceImpl implements WishListService{
 	
 	@Autowired
 	private WishlistRepository wishlistRepo;
+	
 	@Override
 	public Wishlist createWishlist(User user) {
 		Wishlist wishlist = new Wishlist();

@@ -31,8 +31,9 @@ public class WishlistController {
 	private final ProductService productService;
 	
 	@PostMapping("/create")
-	public ResponseEntity<Wishlist> createWishlist(@RequestBody User user){
-		Wishlist wishlist = wishlistService.createWishlist(user);
+	public ResponseEntity<Wishlist> createWishlist(@RequestHeader("Authorization")String jwt) throws Exception{
+		User user1 = userService.findUserByJwtToken(jwt);
+		Wishlist wishlist = wishlistService.createWishlist(user1);
 		return ResponseEntity.ok(wishlist);
 	}
 	

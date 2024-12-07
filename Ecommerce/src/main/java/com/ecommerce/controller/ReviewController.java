@@ -54,7 +54,7 @@ public class ReviewController {
 	    return ResponseEntity.ok(review);
 	}
 	
-	@PatchMapping("reviews/{reviewId}")
+	@PatchMapping("/reviews/{reviewId}")
 	public ResponseEntity<Review> updateReview(@RequestBody CreateReviewRequest req,@PathVariable Long reviewId,@RequestHeader("Authorization") String jwt) throws Exception {
 
 	    User user = userService.findUserByJwtToken(jwt);
