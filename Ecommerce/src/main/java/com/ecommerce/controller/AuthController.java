@@ -22,12 +22,12 @@ import com.ecommerce.service.AuthService;
 public class AuthController {
 //	@Autowired
 //	private UserRepository userRepository;
-	@Autowired
-    private AuthService authService;
+//	@Autowired
+//    private AuthService authService;
 	
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody SignupRequest req) throws Exception{
-		String jwt = authService.createUser(req);
+		String jwt = AuthService.createUser(req);
 		AuthResponse res = new AuthResponse();
 		res.setJwt(jwt);
 		res.setMessage("Register Success");

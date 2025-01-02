@@ -44,8 +44,8 @@ public class CouponServiceImpl implements CouponService{
 		}
 		
 		if(coupon.isActive() && LocalDate.now().isAfter(coupon.getValidityStartDate()) && LocalDate.now().isBefore(coupon.getValidityEndDate())) {
-			user.getUsedCoupons().add(coupon);
-			userRepository.save(user);
+//			user.getUsedCoupons().add(coupon);
+//			userRepository.save(user);
 			
 			double discountPrice = (cart.getTotalSellingPrice()*coupon.getDiscountPercentage())/100;
 			cart.setTotalSellingPrice(cart.getTotalSellingPrice()-discountPrice);

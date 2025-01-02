@@ -43,10 +43,9 @@ public class User {
 	
 	private UserRole role = UserRole.Role_Customer;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany
 	private Set<Address> addresses = new HashSet<>();
 	
 	@ManyToMany
-	@JsonIgnore
 	private Set<Coupon> usedCoupons = new HashSet<>();
 }

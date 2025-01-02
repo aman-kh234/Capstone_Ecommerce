@@ -36,7 +36,5 @@ public class Address {
 	private String pinCode;
 	
 	private String mobile;
-	
-	@ManyToOne
-	private User user;
+
 }

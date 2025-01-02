@@ -53,7 +53,7 @@ public class OrderController {
 	private final PaymentService paymentService;
 	
 	@PostMapping()
-	public ResponseEntity<PaymentLinkResponse> createOrderHandler(@RequestBody Address shippingAddress,@RequestParam PaymentMethod paymentMethod,@RequestHeader("Authorization")String jwt) throws Exception{
+	public ResponseEntity<PaymentLinkResponse> createOrderHandler(@RequestBody Address shippingAddress,@RequestHeader("Authorization")String jwt) throws Exception{
 		User user = userService.findUserByJwtToken(jwt);
 		Cart cart = cartService.findUserCart(user);
 		Set<Order> orders = orderService.createOrder(user, shippingAddress, cart);

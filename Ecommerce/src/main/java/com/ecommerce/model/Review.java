@@ -41,7 +41,6 @@ public class Review {
 	@ElementCollection
 	private List<String> productImages;
 	
-	@JsonIgnore
 	@ManyToOne
 	private Product product;
 	

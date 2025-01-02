@@ -68,7 +68,7 @@ public class AuthServiceImpl implements AuthService{
 			createdUser.setEmail(req.getEmail());
 			createdUser.setFullName(req.getFullName());
 			createdUser.setRole(UserRole.Role_Customer);
-			createdUser.setMobile("6565675657");
+//			createdUser.setMobile();
 			createdUser.setPassword(passwordEncoder.encode(req.getOtp()));
 			user = userRepository.save(createdUser);
 			Cart cart = new Cart();

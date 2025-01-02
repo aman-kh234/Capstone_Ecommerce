@@ -33,8 +33,10 @@ public class AdminCouponController {
 	private final UserService userService;
 	@Autowired
 	private final CartService cartService;
-	
-	@PostMapping("/api")
+
+	@PostMapping("")public AdminCouponController() {
+		// TODO Auto-generated constructor stub
+	}@Sche
 	public ResponseEntity<Cart> applyCoupon(@RequestParam String apply, @RequestParam String code, @RequestParam double orderValue, @RequestHeader("Authorization")String jwt) throws Exception{
 		User user = userService.findUserByJwtToken(jwt);
 		Cart cart;
@@ -46,6 +48,7 @@ public class AdminCouponController {
 		}
 		
 		return ResponseEntity.ok(cart);
+		
 	}
 	
 	@PostMapping("/admin/create")
